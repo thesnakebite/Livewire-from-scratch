@@ -8,6 +8,11 @@ class Greeter extends Component
 {
     public $name = 'Álvaro';
 
+    public function changeName($newName)
+    {
+        $this->name = $newName;
+    }
+
     public function render()
     {
         return view('livewire.greeter');
