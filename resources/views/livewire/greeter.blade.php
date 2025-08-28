@@ -5,7 +5,7 @@
         <p class="font-medium">Bienvenido a...</p>
         <p class="text-zinc-700 dark:text-rose-500">Livewire v3</p>
         <form
-            wire:submit="changeName(document.querySelector('#newName').value)"
+            wire:submit="changeName"
             class="flex flex-col items-start space-y-2">
             <flux:badge
                 size="lg"
@@ -24,7 +24,9 @@
                     size="sm"
                     variant="filled"
                     class:input="font-mono"
-                    description="Escribe un nombre" />
+                    description="Escribe un nombre"
+                    wire:model.live="name"
+                />
             </flux:field>
 
             <flux:button
