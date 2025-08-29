@@ -85,13 +85,11 @@
                         wire:model.fill="greeting"
                         description="Selecciona un saludo"
                     >
-                        <flux:select.option>Hola</flux:select.option>
-                        <flux:select.option>Hi!</flux:select.option>
-                        <flux:select.option>Bonjour</flux:select.option>
-                        <flux:select.option selected>Konnichiwa</flux:select.option>
-                        <flux:select.option>Om Swastiastu</flux:select.option>
-                        <flux:select.option>Namaste</flux:select.option>
-                        <flux:select.option>Hallo</flux:select.option>
+                        @foreach ($greetings as $item)
+                            <flux:select.option>
+                                {{ $item->greeting }}
+                            </flux:select.option>
+                        @endforeach
                     </flux:select>
                 </flux:field>
             </div>

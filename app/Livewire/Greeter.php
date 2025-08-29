@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Greeting;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
@@ -10,6 +11,7 @@ class Greeter extends Component
     #[Validate('required|min:2|max:16')]
     public $name = '';
     public $greeting = '';
+    public $greetings = [];
     public $greetingMessage = '';
 
     public function changeGreeting()
@@ -26,6 +28,25 @@ class Greeter extends Component
             'name.min' => 'El nombre debe contener mínimo 2 caracteres',
             'name.max' => 'El nombre no puede exceder 16 caracteres',
         ];
+    }
+
+    public function mount()
+    {
+        $this->greetings = Greeting::all();
+        $this->greeting = Greeting::where('greeting', 'Konnichiwa')->first()?->greeting;
+    }
+
+    // public function updated($property, $value)
+    // {
+    //     if ($property === 'name') {
+    //         $this->name = strtolower($value);
+    //     }
+    // }
+
+    public function updatedName($value)
+    {
+        // The accented capital letter does not transform them, but it does so with this reference.
+        $this->name = mb_strtolower($value, 'UTF-8');
     }
 
     public function render()
