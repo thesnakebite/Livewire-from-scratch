@@ -15,6 +15,7 @@ class Search extends Component
     #[Validate('required')]
     public $searchText = '';
     public $results = [];
+    public $placeholder = 'Buscar artículos...';
 
     public function updatedSearchText($value)
     {

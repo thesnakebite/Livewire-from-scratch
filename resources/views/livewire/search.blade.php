@@ -1,4 +1,4 @@
-<div class="flex-1 p-6 pb-12 lg:p-20 bg-rose-50 dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_rgb(244_63_94)] rounded-lg">
+<div>
     <p class="text-2xl font-medium"></p>
         <p class="text-zinc-700 dark:text-rose-500">
             <span class="inline-flex items-center justify-center align-bottom">
@@ -61,20 +61,14 @@
         <flux:field class="my-6">
             <flux:input
                 icon="magnifying-glass"
-                class="max-w-6xl"
                 clearable
                 class:input="font-mono"
                 description="Escribe algo para buscar"
+                placeholder="{{ $placeholder }}"
                 wire:model.live.debounce="searchText"
             />
         </flux:field>
     </form>
 
-    <div class="mt-4">
-        @foreach ($results as $result)
-            <div class="text-sm text-rose-500 font-bold p-2 rounded-md bg-emerald-500/10 mb-2">
-                <a href="/article/{{ $result->id }}">{{ $result->title }}</a>
-            </div>
-        @endforeach
-    </div>
+    <livewire:search-results :results="$results" :show="!empty($searchText)" />
 </div>
