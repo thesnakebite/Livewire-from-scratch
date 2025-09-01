@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Article;
 use App\Models\Greeting;
 use Illuminate\Database\Seeder;
 
@@ -27,5 +28,9 @@ class DatabaseSeeder extends Seeder
         Greeting::create(['greeting' => 'Konnichiwa']);
         Greeting::create(['greeting' => 'Namaste']);
         Greeting::create(['greeting' => 'Hallo']);
+
+        Article::factory()
+            ->count(50)
+            ->create();
     }
 }
