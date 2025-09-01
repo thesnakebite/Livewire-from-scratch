@@ -6,6 +6,8 @@ use App\Livewire\Settings\Profile;
 use App\Livewire\Greeter;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Search;
+use App\Livewire\ShowArticle;
+use App\Models\Article;
 
 Route::get('/', Greeter::class)->name('home');
 
@@ -14,6 +16,7 @@ Route::view('dashboard', 'dashboard')
     ->name('dashboard');
 
 Route::get('search', Search::class)->name('search');
+Route::get('article/{article}', ShowArticle::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

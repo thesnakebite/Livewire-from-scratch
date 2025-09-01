@@ -73,7 +73,7 @@
     <div class="mt-4">
         @foreach ($results as $result)
             <div class="text-sm text-rose-500 font-bold p-2 rounded-md bg-emerald-500/10 mb-2">
-                {{ $result->title }}
+                <a href="/article/{{ $result->id }}">{{ $result->title }}</a>
             </div>
         @endforeach
     </div>
