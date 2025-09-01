@@ -5,7 +5,11 @@ namespace App\Livewire;
 use App\Models\Greeting;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 
+#[Layout('components.layouts.public')]
+#[Title('Greeter')]
 class Greeter extends Component
 {
     #[Validate('required|min:2|max:16')]

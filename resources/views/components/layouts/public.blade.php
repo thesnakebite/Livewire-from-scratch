@@ -2,9 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Laravel</title>
+        <title>{{ isset($title) ? config('app.name') . ' | ' . $title : config('app.name') }}</title>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -17,10 +17,24 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
-            {{--
+        <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6">
             @if (Route::has('login'))
-                <nav class="flex items-center justify-end gap-4">
+                <nav class="flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-4">
+                        <a
+                            href="{{ route('home') }}"
+                            class="inline-block px-3 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal {{ request()->routeIs('home') ? 'bg-gray-100 dark:bg-gray-800' : '' }}"
+                        >
+                            Home
+                        </a>
+                        <a
+                            href="{{ route('search') }}"
+                            class="inline-block px-3 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal {{ request()->routeIs('search') ? 'bg-gray-100 dark:bg-gray-800' : '' }}"
+                        >
+                            Search
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-4">
                     @auth
                         <a
                             href="{{ url('/dashboard') }}"
@@ -44,13 +58,13 @@
                             </a>
                         @endif
                     @endauth
+                    </div>
                 </nav>
             @endif
-            --}}
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
             <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <livewire:search />
+                {{ $slot }}
             </main>
         </div>
 

@@ -2,10 +2,14 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
+#[Layout('components.layouts.public')]
+#[Title('Search')]
 class Search extends Component
 {
     #[Validate('required')]

@@ -1,6 +1,5 @@
 <div class="flex-1 p-6 pb-12 lg:p-20 bg-rose-50 dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_rgb(244_63_94)] rounded-lg">
     <p class="text-2xl font-medium"></p>
-        <p class="font-medium">desde</p>
         <p class="text-zinc-700 dark:text-rose-500">
             <span class="inline-flex items-center justify-center align-bottom">
                 <svg
@@ -70,7 +69,7 @@
             />
         </flux:field>
     </form>
-    
+
     <div class="mt-4">
         @foreach ($results as $result)
             <div class="text-sm text-rose-500 font-bold p-2 rounded-md bg-emerald-500/10 mb-2">

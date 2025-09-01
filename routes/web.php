@@ -3,15 +3,17 @@
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
+use App\Livewire\Greeter;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Search;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', Greeter::class)->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::get('search', Search::class)->name('search');
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');
