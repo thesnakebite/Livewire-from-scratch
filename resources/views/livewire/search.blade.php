@@ -73,4 +73,6 @@
     <div x-data x-on:click.outside="$wire.clear()">
         <livewire:search-results :results="$results" :show="!empty($searchText)" />
     </div>
+
+    <livewire:article-index :articles="$allArticles" />
 </div>

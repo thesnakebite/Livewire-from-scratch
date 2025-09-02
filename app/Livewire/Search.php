@@ -37,6 +37,8 @@ class Search extends Component
 
     public function render()
     {
-        return view('livewire.search');
+        return view('livewire.search', [
+            'allArticles' => Article::all(),
+        ]);
     }
 }

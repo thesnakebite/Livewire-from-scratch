@@ -13,7 +13,10 @@
             <p class="text-xs text-zinc-300 font-bold pr-8">No resultados encontrados</p>
         @endif
         @foreach ($results as $result)
-            <div class="text-xs text-rose-300 font-bold p-2 mb-2">
+            <div
+                wire:key="{{ $result->id }}"
+                class="text-xs text-rose-300 font-bold p-2 mb-2"
+            >
                 <a
                     wire:navigate.hover
                     href="/article/{{ $result->id }}"
