@@ -13,14 +13,29 @@
                         <a
                             wire:navigate.hover
                             href="/article/{{ $article->id }}"
-                            class="hover:text-rose-600 dark:text-rose-400 dark:hover:text-rose-500"
+                            class="hover:text-rose-600 dark:text-zinc-400 dark:hover:text-rose-500"
                         >
                             {{ $article->title }}
                         </a>
                     </h4>
-                    <p class="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">
+                    <p class="text-sm text-zinc-600 dark:text-zinc-600 line-clamp-3">
                         {{ str($article->content)->words(35) }}
                     </p>
+                    <div class="mt-6">
+                        <flux:button.group>
+                            <flux:button size="xs" icon="bars-3-bottom-left"></flux:button>
+                            <flux:button size="xs" icon="bars-3"></flux:button>
+                            <flux:button
+                                size="xs"
+                                icon="archive-box-x-mark"
+                                variant="primary"
+                                class="text-red-500 bg-white dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-900"
+                                wire:click="delete({{ $article->id }})"
+                                wire:confirm="¿Estás seguro de querer eliminar este artículo?"
+                            >
+                            </flux:button>
+                        </flux:button.group>
+                    </div>
                 </div>
             @endforeach
         </div>

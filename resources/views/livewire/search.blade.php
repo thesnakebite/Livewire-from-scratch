@@ -74,5 +74,5 @@
         <livewire:search-results :results="$results" :show="!empty($searchText)" />
     </div>
 
-    <livewire:article-index :articles="$allArticles" />
+    <livewire:article-index />
 </div>

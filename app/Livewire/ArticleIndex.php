@@ -2,14 +2,20 @@
 
 namespace App\Livewire;
 
+use App\Models\Article;
 use Livewire\Component;
 
 class ArticleIndex extends Component
 {
-    public $articles = [];
+    public function delete(Article $article)
+    {
+        $article->delete();
+    }
 
     public function render()
     {
-        return view('livewire.article-index');
+        return view('livewire.article-index', [
+            'articles' => Article::all(),
+        ]);
     }
 }
