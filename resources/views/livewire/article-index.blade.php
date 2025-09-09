@@ -1,5 +1,14 @@
 <div class="block">
     <div class="mt-6">
+        <div class="pb-12">
+            <flux:button
+                href="articles/create"
+                variant="filled"
+                wire:navigate
+            >
+                Crear Artículo
+            </flux:button>
+        </div>
         <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-4">
             Artículos Recientes
         </h3>
