@@ -12,7 +12,7 @@
                     <flux:field>
                         <flux:label>Título</flux:label>
                         <flux:input
-                            wire:model="title"
+                            wire:model="form.title"
                         />
                         <flux:error name="title" />
                     </flux:field>
@@ -20,7 +20,7 @@
                     <flux:field>
                         <flux:textarea
                             label="Ingresa la descrición del articulo"
-                            wire:model="content"
+                            wire:model="form.content"
                         />
                     </flux:field>
                 </div>

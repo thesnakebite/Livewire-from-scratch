@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Title;
@@ -12,29 +13,16 @@ use Livewire\Attributes\Validate;
 #[Title('Editar articulo')]
 class ArticleEdit extends Component
 {
-    public ?Article $article;
-
-    #[Validate('required|min:2|max:60')]
-    public $title = '';
-
-    #[Validate('required|min:6|max:200')]
-    public $content = '';
+    public ArticleForm $form;
 
     public function mount(Article $article)
     {
-        $this->title = $article->title;
-        $this->content = $article->content;
-
-        $this->article = $article;
+        $this->form->setArticle($article);
     }
 
     public function save()
     {
-        $this->validate();
-
-        $this->article->update(
-            $this->only(['title', 'content'])
-        );
+        $this->form->update();
 
         $this->redirect('/search', navigate: true);
     }

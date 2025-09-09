@@ -2,27 +2,21 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
-use Livewire\Attributes\Validate;
 
 #[Layout('components.layouts.public')]
 #[Title('Crear Articulo')]
 class ArticleCreate extends Component
 {
-    #[Validate('required|min:2|max:60')]
-    public $title = '';
-
-    #[Validate('required|min:6|max:200')]
-    public $content = '';
+    public ArticleForm $form;
 
     public function save()
     {
-        $this->validate();
-
-        Article::create($this->all());
+        $this->form->store();
 
         $this->redirect('/search', navigate: true);
     }
