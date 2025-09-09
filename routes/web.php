@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\ArticleCreate;
+use App\Livewire\ArticleEdit;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -19,6 +20,7 @@ Route::view('dashboard', 'dashboard')
 Route::get('search', Search::class)->name('search');
 Route::get('article/{article}', ShowArticle::class);
 Route::get('articles/create', ArticleCreate::class);
+Route::get('articles/{article}/edit', ArticleEdit::class);
 
 Route::middleware(['auth'])->group(function () {
     Route::redirect('settings', 'settings/profile');

@@ -33,7 +33,15 @@
                     <div class="mt-6">
                         <flux:button.group>
                             <flux:button size="xs" icon="bars-3-bottom-left"></flux:button>
-                            <flux:button size="xs" icon="bars-3"></flux:button>
+                            <flux:button
+                                href="/articles/{{ $article->id }}/edit"
+                                size="xs"
+                                icon="pencil-square"
+                                variant="filled"
+                                class="hover:bg-zinc-500 hover:text-blue-500"
+                                wire:navigate
+                            >
+                            </flux:button>
                             <flux:button
                                 size="xs"
                                 icon="archive-box-x-mark"
