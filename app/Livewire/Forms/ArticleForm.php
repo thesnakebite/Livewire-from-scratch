@@ -16,10 +16,15 @@ class ArticleForm extends Form
     #[Validate('required|min:6|max:500')]
     public $content = '';
 
+    public $published = false;
+    public $notification = 'none';
+
     public function setArticle(Article $article)
     {
         $this->title = $article->title;
         $this->content = $article->content;
+        $this->published = $article->published;
+        $this->notification = $article->notification;
 
         $this->article = $article;
     }
@@ -28,14 +33,14 @@ class ArticleForm extends Form
     {
         $this->validate();
 
-        Article::create($this->only(['title', 'content']));
+        Article::create($this->only(['title', 'content', 'published', 'notification']));
     }
     public function update()
     {
         $this->validate();
 
         $this->article->update(
-            $this->only(['title', 'content'])
+            $this->only(['title', 'content', 'published', 'notification'])
         );
     }
 }

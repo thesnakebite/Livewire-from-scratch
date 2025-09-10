@@ -23,6 +23,47 @@
                             wire:model="form.content"
                         />
                     </flux:field>
+                     <!-- Checkbox with custom styles -->
+                     <div class="my-5">
+                        <label class="flex items-center gap-3 cursor-pointer">
+                            <input type="checkbox" wire:model.boolean="form.published" class="custom-checkbox">
+                            <span class="text-sm font-medium text-zinc-800 dark:text-zinc-200">Publicado</span>
+                        </label>
+                    </div>
+
+                    <!-- Checkbox with custom styles -->
+                    <div class="mt-5">
+                        <label class="text-sm font-medium text-zinc-800 dark:text-zinc-200">Opciones de Notificaciones</label>
+                        <div class="space-y-2 mt-2">
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    wire:model="form.notification"
+                                    value="email"
+                                    class="custom-radio"
+                                >
+                                <span class="text-sm text-zinc-800 dark:text-zinc-200">Correo</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    wire:model="form.notification"
+                                    value="sms"
+                                    class="custom-radio"
+                                >
+                                <span class="text-sm text-zinc-800 dark:text-zinc-200">SMS</span>
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer">
+                                <input
+                                    type="radio"
+                                    wire:model="form.notification"
+                                    value="none"
+                                    class="custom-radio"
+                                >
+                                <span class="text-sm text-zinc-800 dark:text-zinc-200">Ninguna</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="mt-8 text-right">
