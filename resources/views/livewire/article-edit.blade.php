@@ -34,35 +34,61 @@
                     <!-- Checkbox with custom styles -->
                     <div class="mt-5">
                         <label class="text-sm font-medium text-zinc-800 dark:text-zinc-200">Opciones de Notificaciones</label>
-                        <div class="space-y-2 mt-2">
+                        <div class="flex justify-start gap-3 mt-2">
                             <label class="flex items-center gap-3 cursor-pointer">
                                 <input
                                     type="radio"
-                                    wire:model="form.notification"
-                                    value="email"
+                                    wire:model.boolean="form.allowNotifications"
+                                    value="true"
                                     class="custom-radio"
                                 >
-                                <span class="text-sm text-zinc-800 dark:text-zinc-200">Correo</span>
+                                <span class="text-sm text-zinc-800 dark:text-zinc-200">Si</span>
                             </label>
                             <label class="flex items-center gap-3 cursor-pointer">
                                 <input
                                     type="radio"
-                                    wire:model="form.notification"
-                                    value="sms"
+                                    wire:model.boolean="form.allowNotifications"
+                                    value="false"
                                     class="custom-radio"
                                 >
-                                <span class="text-sm text-zinc-800 dark:text-zinc-200">SMS</span>
-                            </label>
-                            <label class="flex items-center gap-3 cursor-pointer">
-                                <input
-                                    type="radio"
-                                    wire:model="form.notification"
-                                    value="none"
-                                    class="custom-radio"
-                                >
-                                <span class="text-sm text-zinc-800 dark:text-zinc-200">Ninguna</span>
+                                <span class="text-sm text-zinc-800 dark:text-zinc-200">No</span>
                             </label>
                         </div>
+                        <div class="mt-5 flex flex-col">
+                            <div
+                                x-show="$wire.form.allowNotifications"
+                                class="space-y-2">
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        wire:model="form.notifications"
+                                        value="email"
+                                        class="custom-checkbox"
+                                    >
+                                    <span class="text-sm text-zinc-800 dark:text-zinc-200">Correo electrónico</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        wire:model="form.notifications"
+                                        value="sms"
+                                        class="custom-checkbox"
+                                    >
+                                    <span class="text-sm text-zinc-800 dark:text-zinc-200">SMS</span>
+                                </label>
+                                <label class="flex items-center gap-3 cursor-pointer">
+                                    <input
+                                        type="checkbox"
+                                        wire:model="form.notifications"
+                                        value="whatsapp"
+                                        class="custom-checkbox"
+                                    >
+                                    <span class="text-sm text-zinc-800 dark:text-zinc-200">WhatsApp</span>
+                                </label>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
 
