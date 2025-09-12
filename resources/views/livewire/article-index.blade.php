@@ -1,6 +1,6 @@
 <div class="block">
     <div class="mt-6">
-        <div class="pb-12">
+        <div class="pb-12 flex justify-between">
             <flux:button
                 href="articles/create"
                 variant="filled"
@@ -8,6 +8,9 @@
             >
                 Crear Artículo
             </flux:button>
+            <flux:badge color="rose" icon="fire" size="lg">
+                <livewire:published-count />
+            </flux:badge>
         </div>
         <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-4">
             Artículos Recientes
