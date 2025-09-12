@@ -124,7 +124,10 @@
                         type="submit"
                         size="sm"
                         variant="primary"
-                        class="bg-rose-700 dark:bg-rose-400 hover:bg-rose-800 dark:hover:bg-rose-500 cursor-pointer mb-6 transition-colors"
+                        class="bg-rose-700 dark:bg-rose-400 dark:hover:bg-rose-500 cursor-pointer mb-6 transition-colors disabled:opacity-75 disabled:bg-rose-300"
+                        wire:dirty.class="hover:bg-rose-800"
+                        wire:dirty.remove.attr="disabled"
+                        disabled
                     >
                         Actualizar
                     </flux:button>
