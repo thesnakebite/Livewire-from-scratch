@@ -10,7 +10,14 @@
             <form wire:submit="save">
                 <div class="space-y-4">
                     <flux:field>
-                        <flux:label>Título</flux:label>
+                        <flux:label
+                            class="transition-colors"
+                            wire:dirty.class="text-orange-400 font-medium"
+                            wire:target="form.title"
+                        >
+                            Título
+                            <span wire:dirty wire:target="form.title">*</span>
+                        </flux:label>
                         <flux:input
                             wire:model="form.title"
                         />
@@ -18,22 +25,41 @@
                     </flux:field>
 
                     <flux:field>
-                        <flux:textarea
-                            label="Ingresa la descrición del articulo"
-                            wire:model="form.content"
-                        />
+                        <flux:label
+                            class="transition-colors"
+                            wire:dirty.class="text-orange-400 font-medium"
+                            wire:target="form.content"
+                        >
+                            Ingresa la descrición del articulo
+                            <span wire:dirty wire:target="form.content">*</span>
+                        </flux:label>
+                        <flux:textarea wire:model="form.content" />
                     </flux:field>
                      <!-- Checkbox with custom styles -->
                      <div class="my-5">
                         <label class="flex items-center gap-3 cursor-pointer">
                             <input type="checkbox" wire:model.boolean="form.published" class="custom-checkbox">
-                            <span class="text-sm font-medium text-zinc-800 dark:text-zinc-200">Publicado</span>
+                            <span
+                                class="text-sm text-zinc-800 dark:text-zinc-200 transition-colors"
+                                wire:dirty.class="!text-orange-400 !font-medium"
+                                wire:target="form.published"
+                            >
+                                Publicado
+                                <span wire:dirty wire:target="form.published">*</span>
+                            </span>
                         </label>
                     </div>
 
                     <!-- Checkbox with custom styles -->
                     <div class="mt-5">
-                        <label class="text-sm font-medium text-zinc-800 dark:text-zinc-200">Opciones de Notificaciones</label>
+                        <div
+                            class="text-sm text-zinc-800 dark:text-zinc-200 transition-colors"
+                            wire:dirty.class="!text-orange-400 !font-medium"
+                            wire:target="form.notifications"
+                        >
+                            Opciones de Notificaciones
+                            <span wire:dirty wire:target="form.notifications">*</span>
+                        </div>
                         <div class="flex justify-start gap-3 mt-2">
                             <label class="flex items-center gap-3 cursor-pointer">
                                 <input
