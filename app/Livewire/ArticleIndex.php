@@ -4,9 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ArticleIndex extends Component
 {
+    use WithPagination;
+
     public function delete(Article $article)
     {
         $article->delete();
@@ -15,7 +18,7 @@ class ArticleIndex extends Component
     public function render()
     {
         return view('livewire.article-index', [
-            'articles' => Article::all(),
+            'articles' => Article::paginate(8),
         ]);
     }
 }
