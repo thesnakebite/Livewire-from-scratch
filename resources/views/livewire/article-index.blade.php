@@ -8,13 +8,28 @@
             >
                 Crear Artículo
             </flux:button>
-            <flux:badge color="rose" icon="fire" size="lg">
-                <livewire:published-count />
-            </flux:badge>
         </div>
-        <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-4">
-            Artículos Recientes
-        </h3>
+        <div class="flex justify-between items-center my-4">
+            <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
+                Artículos Recientes
+            </h3>
+            <div>
+                <flux:button
+                variant="filled"
+                wire:click="showAll()"
+            >
+                Ver todos
+            </flux:button>
+            <flux:button
+                variant="primary"
+                class="bg-rose-400/40 text-rose-200"
+                wire:click="showPublished()"
+            >
+                Ver publicados (<livewire:published-count placeholder-text="loading" />)
+            </flux:button>
+            </div>
+        </div>
+
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($articles as $article)
                 <div
