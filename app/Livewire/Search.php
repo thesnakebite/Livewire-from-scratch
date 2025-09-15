@@ -2,11 +2,12 @@
 
 namespace App\Livewire;
 
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\On;
 use App\Models\Article;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\Attributes\Url;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 
 #[Layout('components.layouts.public')]
@@ -14,29 +15,32 @@ use Livewire\Attributes\Validate;
 class Search extends Component
 {
     #[Validate('required')]
+    #[Url(as: 'q', except: '', history: true)]
     public $searchText = '';
-    public $results = [];
     public $placeholder = 'Buscar artículos...';
-
-    public function updatedSearchText($value)
-    {
-        $this->reset('results');
-
-        $this->validate();
-
-        $searchTerm = "%{$value}%";
-
-        $this->results = Article::where('title', 'LIKE', $searchTerm)->get();
-    }
 
     #[On('clear-search')]
     public function clear()
     {
-        $this->reset('results', 'searchText');
+        $this->reset('searchText');
     }
+
+    // Alternative approach using queryString() method (Livewire 2/3 compatible)
+    // protected function queryString()
+    // {
+    //     return [
+    //         'searchText' => [
+    //             'as' => 'q',
+    //             'history' => true,
+    //             'except' => ''
+    //         ]
+    //     ];
+    // }
 
     public function render()
     {
-        return view('livewire.search');
+        return view('livewire.search', [
+            'results' => Article::where('title', 'LIKE', "%{$this->searchText}%")->get()
+        ]);
     }
 }
