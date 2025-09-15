@@ -75,7 +75,7 @@
             @endforeach
         </div>
         <div class="mt-6">
-            {{ $articles->links(data: ['scrollTo' => 'false']) }}
+            {{ $articles->links('components.custom-pagination', data: ['scrollTo' => 'false']) }}
         </div>
     </div>
 </div>
