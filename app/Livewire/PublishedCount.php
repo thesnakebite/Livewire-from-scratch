@@ -5,18 +5,19 @@ namespace App\Livewire;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Lazy;
+use Livewire\Attributes\Computed;
 
 #[Lazy]
 class PublishedCount extends Component
 {
-    public $count = 0;
     public $placeholderText = '';
 
-    public function mount()
+    #[Computed(cache: true, key: 'published-count')]
+    public function count()
     {
         sleep(1);
 
-        $this->count = Article::where('published', 1)->count();
+        return Article::where('published', 1)->count();
     }
 
     public function placeholder()

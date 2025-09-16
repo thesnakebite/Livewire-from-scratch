@@ -22,7 +22,7 @@
             </flux:button>
             <flux:button
                 variant="primary"
-                class="bg-rose-400/40 text-rose-200"
+                class="bg-rose-400/40 text-rose-800 dark:text-rose-200"
                 wire:click="showPublished()"
             >
                 Ver publicados (<livewire:published-count placeholder-text="loading" />)
@@ -31,7 +31,7 @@
         </div>
 
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            @foreach ($articles as $article)
+            @foreach ($this->articles as $article)
                 <div
                     wire:key="{{ $article->id }}"
                     class="p-4 border border-zinc-200 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 hover:shadow-md transition-shadow"
@@ -75,7 +75,7 @@
             @endforeach
         </div>
         <div class="mt-6">
-            {{ $articles->links('components.custom-pagination', data: ['scrollTo' => 'false']) }}
+            {{ $this->articles->links('components.custom-pagination', data: ['scrollTo' => 'false']) }}
         </div>
     </div>
 </div>
