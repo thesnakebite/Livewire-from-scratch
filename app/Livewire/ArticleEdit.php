@@ -24,7 +24,9 @@ class ArticleEdit extends Component
     {
         $this->form->update();
 
-        $this->redirect('/search', navigate: true);
+        session()->flash('status', 'Artículo actualizado exitosamente.');
+
+        $this->redirect(Search::class , navigate: true);
     }
 
     public function messages()

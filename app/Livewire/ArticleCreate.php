@@ -18,7 +18,7 @@ class ArticleCreate extends Component
     {
         $this->form->store();
 
-        $this->redirect('/search', navigate: true);
+        $this->redirect(Search::class , navigate: true);
     }
 
     public function messages()

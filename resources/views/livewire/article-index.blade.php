@@ -37,6 +37,15 @@
             </div>
         </div>
 
+        @if (session('status'))
+            <div class="flex items-center gap-3 bg-zinc-200 border border-zinc-200 text-zinc-800 px-4 py-3 rounded-lg mb-4 dark:bg-zinc-500/40 dark:border-zinc-800 dark:text-zinc-300">
+                <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="font-medium">{{ session('status') }}</span>
+            </div>
+        @endif
+
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             @foreach ($this->articles as $article)
                 <div
