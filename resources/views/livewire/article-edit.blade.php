@@ -3,7 +3,7 @@
         class="p-8 border border-zinc-200 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900"
     >
         <h1 class="text-xl font-medium text-zinc-900 mb-2 dark:text-rose-500">
-            Editar Artículo
+            Editar Artículo {{ $form->id }}
         </h1>
 
         <div class="mt-6">
