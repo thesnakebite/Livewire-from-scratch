@@ -15,18 +15,25 @@
             </h3>
             <div>
                 <flux:button
-                variant="filled"
-                wire:click="showAll()"
-            >
-                Ver todos
-            </flux:button>
-            <flux:button
-                variant="primary"
-                class="bg-rose-400/40 text-rose-800 dark:text-rose-200"
-                wire:click="showPublished()"
-            >
-                Ver publicados (<livewire:published-count placeholder-text="loading" />)
-            </flux:button>
+                    @class([
+                        'cursor-pointer' => $showOnlyPublished,
+                        'bg-rose-400/40 hover:bg-rose-400/30 text-rose-800 dark:text-rose-200 cursor-pointer' => !$showOnlyPublished,
+                    ])
+                    variant="primary"
+                    wire:click="togglePublished(false)"
+                >
+                    Ver todos
+                </flux:button>
+                <flux:button
+                    @class([
+                        'bg-rose-400/40 hover:bg-rose-400/30 text-rose-800 dark:text-rose-200 cursor-pointer' => $showOnlyPublished,
+                        'cursor-pointer' => !$showOnlyPublished,
+                    ])
+                    variant="primary"
+                    wire:click="togglePublished(true)"
+                >
+                    Ver publicados (<livewire:published-count placeholder-text="loading" />)
+                </flux:button>
             </div>
         </div>
 

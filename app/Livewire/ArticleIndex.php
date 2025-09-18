@@ -5,12 +5,14 @@ namespace App\Livewire;
 use App\Models\Article;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Attributes\Session;
 use Livewire\Attributes\Computed;
 
 class ArticleIndex extends Component
 {
     use WithPagination;
 
+    #[Session(key: 'published')]
     public $showOnlyPublished = false;
 
     #[Computed]
@@ -36,15 +38,9 @@ class ArticleIndex extends Component
         cache()->forget('published-count');
     }
 
-    public function showAll()
+    public function togglePublished($showOnlyPublished)
     {
-        $this->showOnlyPublished = false;
-        $this->resetPage(pageName: 'articulos-pagina');
-    }
-
-    public function showPublished()
-    {
-        $this->showOnlyPublished = true;
+        $this->showOnlyPublished = $showOnlyPublished;
         $this->resetPage(pageName: 'articulos-pagina');
     }
 }
