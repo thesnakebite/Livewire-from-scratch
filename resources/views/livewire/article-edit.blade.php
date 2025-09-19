@@ -35,6 +35,26 @@
                         </flux:label>
                         <flux:textarea wire:model="form.content" />
                     </flux:field>
+
+                    <flux:input
+                        wire:model="form.photo"
+                        type="file"
+                        label="Foto artículo"
+                    />
+                    @if ($form->photo)
+                        <img
+                            class="size-28 aspect-square rounded object-cover"
+                            src="{{ $form->photo->temporaryUrl() }}"
+                            alt="{{ $form->title }}"
+                        >
+                    @elseif($form->photo_path)
+                        <img
+                           class="size-28 aspect-square rounded object-cover"
+                           src="{{ Storage::url($form->photo_path) }}"
+                           alt="{{ $form->title }}"
+                        >
+                    @endif
+
                      <!-- Checkbox with custom styles -->
                      <div class="my-5">
                         <label class="flex items-center gap-3 cursor-pointer">
@@ -124,10 +144,7 @@
                         type="submit"
                         size="sm"
                         variant="primary"
-                        class="bg-rose-700 dark:bg-rose-400 dark:hover:bg-rose-500 cursor-pointer mb-6 transition-colors disabled:opacity-75 disabled:bg-rose-300"
-                        wire:dirty.class="hover:bg-rose-800"
-                        wire:dirty.remove.attr="disabled"
-                        disabled
+                        class="bg-rose-700 dark:bg-rose-400 dark:hover:bg-rose-500 cursor-pointer mb-6 transition-colors"
                     >
                         Actualizar
                     </flux:button>

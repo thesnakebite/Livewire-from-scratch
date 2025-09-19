@@ -23,6 +23,20 @@
                             wire:model="form.content"
                         />
                     </flux:field>
+
+                    <flux:input
+                        wire:model="form.photo"
+                        type="file"
+                        label="Foto artículo"
+                    />
+                    @if ($form->photo)
+                        <img
+                            class="size-28 aspect-square rounded"
+                            src="{{ $form->photo->temporaryUrl() }}"
+                            alt="{{ $form->title }}"
+                        >
+                    @endif
+
                     <!-- Checkbox with custom styles -->
                     <div class="my-5">
                         <label class="flex items-center gap-3 cursor-pointer">

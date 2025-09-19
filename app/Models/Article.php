@@ -15,6 +15,7 @@ class Article extends Model
         'content',
         'published',
         'notifications',
+        'photo_path',
     ];
 
     protected $casts = [

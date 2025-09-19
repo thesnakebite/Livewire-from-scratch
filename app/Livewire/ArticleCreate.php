@@ -3,15 +3,17 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\ArticleForm;
-use App\Models\Article;
 use Livewire\Component;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
+use Livewire\WithFileUploads;
 
 #[Layout('components.layouts.public')]
 #[Title('Crear Articulo')]
 class ArticleCreate extends Component
 {
+    use WithFileUploads;
+
     public ArticleForm $form;
 
     public function save()
@@ -30,6 +32,8 @@ class ArticleCreate extends Component
             'content.required' => 'La descrición es obligatoría',
             'content.min' => 'La descrición debe contener mínimo 6 caracteres',
             'content.max' => 'La descrición debe contener maximo 200 caracteres',
+            'photo.image' => 'El archivo debe ser una imagen',
+            'photo.max' => 'La imagen no puede ser mayor a 1MB',
         ];
     }
 
