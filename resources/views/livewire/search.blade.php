@@ -76,7 +76,11 @@
     </form>
 
     <div x-data x-on:click.outside="$wire.clear()">
-        <livewire:search-results :results="$results" :show="!empty($searchText)" />
+        @if (!empty($searchText))
+            <div wire:transition.in.up.duration.500ms>
+                <livewire:search-results :results="$results" />
+            </div>
+        @endif
     </div>
 
     <livewire:article-index />

@@ -119,7 +119,9 @@
                         <div class="mt-5 flex flex-col">
                             <div
                                 x-show="$wire.form.allowNotifications"
-                                class="space-y-2">
+                                class="space-y-2"
+                                wire:transition
+                            >
                                 <label class="flex items-center gap-3 cursor-pointer">
                                     <input
                                         type="checkbox"
