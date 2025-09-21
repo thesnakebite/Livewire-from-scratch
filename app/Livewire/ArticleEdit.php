@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
-use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
-use Livewire\WithFileUploads;
+use App\Livewire\Forms\ArticleForm;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 #[Layout('components.layouts.public')]
 #[Title('Editar articulo')]
@@ -22,6 +24,15 @@ class ArticleEdit extends Component
         $this->form->setArticle($article);
     }
 
+    public function downloadPhoto()
+    {
+        $filename = Str::slug($this->form->title) . '.png';
+
+        return response()->download(
+            Storage::disk('public')->path($this->form->photo_path),
+            $filename
+        );
+    }
     public function save()
     {
         $this->form->update();

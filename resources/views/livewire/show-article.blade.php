@@ -8,10 +8,8 @@
             >
         </div>
     @else
-        <div class="mt-4">
-            <flux:callout>
-                <flux:callout.heading icon="photo">Foto artículo</flux:callout.heading>
-
+        <div class="my-8 max-w-xs">
+            <flux:callout icon="photo">
                 <flux:callout.text>
                     Este artículo no tiene imagen
                 </flux:callout.text>

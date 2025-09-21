@@ -45,19 +45,31 @@
                             label="Foto artículo"
                         />
                     </flux:field>
-                    @if ($form->photo)
-                        <img
-                            class="size-28 aspect-square rounded object-cover"
-                            src="{{ $form->photo->temporaryUrl() }}"
-                            alt="{{ $form->title }}"
-                        >
-                    @elseif($form->photo_path)
-                        <img
-                           class="size-28 aspect-square rounded object-cover"
-                           src="{{ Storage::url($form->photo_path) }}"
-                           alt="{{ $form->title }}"
-                        >
-                    @endif
+                    <div class="flex items-start gap-4">
+                        @if ($form->photo)
+                            <img
+                                class="size-28 aspect-square rounded object-cover"
+                                src="{{ $form->photo->temporaryUrl() }}"
+                                alt="{{ $form->title }}"
+                            >
+                        @elseif($form->photo_path)
+                            <img
+                               class="size-28 aspect-square rounded object-cover"
+                               src="{{ Storage::url($form->photo_path) }}"
+                               alt="{{ $form->title }}"
+                            >
+                            <div class="flex flex-col gap-2">
+                                <flux:button
+                                    wire:click="downloadPhoto"
+                                    variant="outline"
+                                    size="sm"
+                                    icon="arrow-down-tray"
+                                >
+                                    Descargar imagen
+                                </flux:button>
+                            </div>
+                        @endif
+                    </div>
 
                      <!-- Checkbox with custom styles -->
                      <div class="my-5">
