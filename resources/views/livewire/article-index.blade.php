@@ -1,19 +1,33 @@
 <div class="block">
     <div class="mt-6">
+        <div wire:offline class="mb-6 w-full">
+            <flux:callout variant="warning" icon="exclamation-triangle" class="mx-auto">
+                <flux:callout.text>
+                    Sin conexión. Los cambios se guardarán cuando vuelvas a estar online.
+                </flux:callout.text>
+            </flux:callout>
+        </div>
+
         <div class="pb-12 flex justify-between">
             <flux:button
                 href="articles/create"
                 variant="filled"
                 wire:navigate
+                wire:offline.class="opacity-50 pointer-events-none"
             >
                 Crear Artículo
             </flux:button>
         </div>
         <div class="flex justify-between items-center my-4">
-            <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
+            <h3
+                class="text-lg font-semibold text-zinc-800 dark:text-zinc-200"
+                wire:offline.class="text-zinc-500 dark:text-zinc-600"
+            >
                 Artículos Recientes
             </h3>
-            <div>
+            <div
+                wire:offline.class="opacity-50 pointer-events-none"
+            >
                 <flux:button
                     @class([
                         'cursor-pointer' => $showOnlyPublished,
@@ -51,20 +65,30 @@
                 <div
                     wire:key="{{ $article->id }}"
                     class="p-4 border border-zinc-200 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-900 hover:shadow-md transition-shadow"
+                    wire:offline.class="opacity-75 bg-zinc-50 dark:bg-zinc-950"
                     >
-                    <h4 class="font-medium text-zinc-900 dark:text-zinc-100 mb-2">
+                    <h4
+                        class="font-medium text-zinc-900 dark:text-zinc-400 hover:text-rose-600 dark:hover:text-rose-600 mb-2"
+                        wire:offline.class="text-zinc-500 dark:text-zinc-600"
+                    >
                         <a
                             wire:navigate.hover
                             href="/article/{{ $article->id }}"
-                            class="hover:text-rose-600 dark:text-zinc-400 dark:hover:text-rose-500"
+                            wire:offline.class="pointer-events-none"
                         >
                             {{ $article->title }}
                         </a>
                     </h4>
-                    <p class="text-sm text-zinc-600 dark:text-zinc-600 line-clamp-3">
+                    <p
+                        class="text-sm text-zinc-600 dark:text-zinc-600 line-clamp-3"
+                        wire:offline.class="text-zinc-400 dark:text-zinc-700"
+                    >
                         {{ str($article->content)->words(35) }}
                     </p>
-                    <div class="mt-6">
+                    <div
+                        class="mt-6"
+                        wire:offline.class="opacity-50 pointer-events-none"
+                    >
                         <flux:button.group>
                             <flux:button size="xs" icon="bars-3-bottom-left"></flux:button>
                             <flux:button

@@ -58,15 +58,20 @@
                 </span>
             </p>
     <form>
-        <flux:field class="my-6">
+        <flux:field
+            class="my-6"
+            wire:offline.class="opacity-75"
+        >
             <flux:input
                 icon="magnifying-glass"
                 clearable
                 class:input="font-mono"
-                description="Escribe algo para buscar"
                 placeholder="{{ $placeholder }}"
                 wire:model.live.debounce="searchText"
-            />
+                wire:offline.attr="disabled"
+                wire:offline.class="cursor-not-allowed opacity-60"
+            >
+            </flux:input>
         </flux:field>
     </form>
 
