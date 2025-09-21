@@ -21,7 +21,7 @@
                         <flux:input
                             wire:model="form.title"
                         />
-                        <flux:error name="title" />
+                        <flux:error name="form.title" />
                     </flux:field>
 
                     <flux:field>
@@ -34,13 +34,17 @@
                             <span wire:dirty wire:target="form.content">*</span>
                         </flux:label>
                         <flux:textarea wire:model="form.content" />
+                        <flux:error name="form.content" />
                     </flux:field>
 
-                    <flux:input
-                        wire:model="form.photo"
-                        type="file"
-                        label="Foto artículo"
-                    />
+                    <flux:field>
+                        <flux:input
+                            wire:model="form.photo"
+                            type="file"
+                            accept="image/*"
+                            label="Foto artículo"
+                        />
+                    </flux:field>
                     @if ($form->photo)
                         <img
                             class="size-28 aspect-square rounded object-cover"

@@ -10,17 +10,23 @@ use Livewire\Attributes\Validate;
 class ArticleForm extends Form
 {
     public Article $article;
-    
+
     #[Locked]
     public int $id;
 
-    #[Validate('required|min:2|max:50')]
+    #[Validate('required', message: 'El título es obligatorio')]
+    #[Validate('min:2', message: 'El título debe contener mínimo 2 caracteres')]
+    #[Validate('max:50', message: 'El título no puede exceder 50 caracteres')]
     public $title = '';
 
-    #[Validate('required|min:6|max:500')]
+    #[Validate('required', message: 'La descripción es obligatoria')]
+    #[Validate('min:6', message: 'La descripción debe contener mínimo 6 caracteres')]
+    #[Validate('max:500', message: 'La descripción debe contener máximo 500 caracteres')]
     public $content = '';
 
-    #[Validate('image|max:1024')]
+    #[Validate('nullable')]
+    #[Validate('image', message: 'El archivo debe ser una imagen')]
+    #[Validate('max:1024', message: 'La imagen no puede ser mayor a 1MB')]
     public $photo;
 
     public $published = false;
@@ -76,4 +82,5 @@ class ArticleForm extends Form
 
         cache()->forget('published-count');
     }
+
 }

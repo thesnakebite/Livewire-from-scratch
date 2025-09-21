@@ -10,11 +10,10 @@
             <form wire:submit="save">
                 <div class="space-y-4">
                     <flux:field>
-                        <flux:label>Título</flux:label>
                         <flux:input
+                            label="Título"
                             wire:model="form.title"
                         />
-                        <flux:error name="title" />
                     </flux:field>
 
                     <flux:field>
@@ -27,11 +26,12 @@
                     <flux:input
                         wire:model="form.photo"
                         type="file"
+                        accept="image/*"
                         label="Foto artículo"
                     />
                     @if ($form->photo)
                         <img
-                            class="size-28 aspect-square rounded"
+                            class="size-28 aspect-square rounded object-cover"
                             src="{{ $form->photo->temporaryUrl() }}"
                             alt="{{ $form->title }}"
                         >
