@@ -9,9 +9,11 @@ use Livewire\Attributes\Url;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
+use Livewire\Attributes\Isolate;
 
 #[Layout('components.layouts.public')]
 #[Title('Search')]
+#[Isolate]
 class Search extends Component
 {
     #[Validate('required')]
