@@ -1,4 +1,23 @@
 <div>
+    @if ($article->photo_path)
+        <div class="mb-4 aspect-square size-44 rounded border border-zinc-500 dark:border-zinc-300">
+            <img
+                src="{{ Storage::url($article->photo_path) }}"
+                alt="{{ $article->title }}"
+                class="size-full object-center"
+            >
+        </div>
+    @else
+        <div class="mt-4">
+            <flux:callout>
+                <flux:callout.heading icon="photo">Foto artículo</flux:callout.heading>
+
+                <flux:callout.text>
+                    Este artículo no tiene imagen
+                </flux:callout.text>
+            </flux:callout>
+        </div>
+    @endif
     <h2 class="text-2xl text-rose-400">
         {{ $article->title }}
     </h2>
