@@ -4,7 +4,7 @@
             <img
                 src="{{ Storage::url($article->photo_path) }}"
                 alt="{{ $article->title }}"
-                class="size-full object-center"
+                class="size-full object-cover"
             >
         </div>
     @else

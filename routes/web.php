@@ -12,22 +12,19 @@ use App\Livewire\ShowArticle;
 use App\Models\Article;
 
 Route::get('/', Greeter::class)->name('home');
-
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
 Route::get('search', Search::class)->name('search');
 Route::get('article/{article}', ShowArticle::class);
-Route::get('articles/create', ArticleCreate::class);
-Route::get('articles/{article}/edit', ArticleEdit::class);
 
 Route::middleware(['auth'])->group(function () {
+    Route::view('dashboard', 'dashboard')
+        ->middleware(['auth', 'verified'])
+        ->name('dashboard');
     Route::redirect('settings', 'settings/profile');
-
     Route::get('settings/profile', Profile::class)->name('settings.profile');
     Route::get('settings/password', Password::class)->name('settings.password');
     Route::get('settings/appearance', Appearance::class)->name('settings.appearance');
+    Route::get('articles/create', ArticleCreate::class)->name('create.article');
+    Route::get('articles/{article}/edit', ArticleEdit::class);
 });
 
 require __DIR__.'/auth.php';
